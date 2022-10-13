@@ -1,0 +1,17 @@
+extends ../layouts/app.pug
+
+block content
+    // BEGIN (write your solution here)
+    h5 #{errorMessage}
+    h3 authentification form
+        form(action="/session" method="post")
+            div
+                label Nickname
+                    sup *
+                input(name="nickname" type="text")
+            div
+                label Password
+                    sup *
+                input(name="password" type="password")
+            input(type="submit" value="Save")
+    // END
