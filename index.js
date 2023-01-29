@@ -1,4 +1,5 @@
-const Express = require('express');
+//const Express = require('express');
+import Express from 'express';
 const app = new Express();
 
 let counter = 0;
@@ -8,6 +9,26 @@ function _204(res){
     res.end('204 no content');
 }
 
+function midware_1(req, res, next){
+    console.log('mid 1');
+    next();
+}
+
+function midware_2(req, res, next){
+    console.log('mid 2');
+    next();
+}
+
+function midware_3(req, res, next){
+    console.log('mid 3');
+    next(3); // будет ЭРРОР!
+}
+
+app.get('/midware', midware_1, midware_2, midware_3, (req,res) => {
+    res.send({result:'some'});
+})
+
+//-----------------------------------
 app.get('/', (req,res) => {
     res.send({value:counter})
 })
